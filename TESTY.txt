@@ -1,0 +1,27 @@
+✔ aplikacja startuje i przechodzi sesję przy zablokowanym localStorage (6.6677ms)
+✔ nieprawidłowy zapis sesji i postępu nie blokuje ekranu głównego (9.1148ms)
+✔ brak Web Speech API ma czytelny komunikat i nie blokuje nauki (2.4837ms)
+✔ błąd syntezatora daje komunikat, a pytanie pozostaje dostępne (3.388ms)
+✔ powtórne kliknięcie odpowiedzi nie nalicza dodatkowego wyniku (2.6099ms)
+✔ wznowienie interfejsu po odpowiedzi zachowuje zablokowane przyciski (4.4949ms)
+✔ 70 unikalnych zagadnień, cztery kategorie i prawidłowe klucze odpowiedzi (1.0598ms)
+✔ każdy temat ma dwa kompletne, dostępne warianty schematu bez zewnętrznych zasobów (2.5444ms)
+✔ tasowanie nie zmienia wejścia, nie gubi elementów i permutuje indeksy (0.1738ms)
+✔ schematy wersów i strofy nie zawijają jednego wersu do dwóch linijek (0.1172ms)
+✔ pełna sesja 70 pytań kończy się dokładnie wynikiem 70/70 (4.3996ms)
+✔ 15 pytań testu bez duplikatów, wynik 0/15 i brak automatycznej pętli (0.1885ms)
+✔ odłożenie wszystkich 70 pytań: powracają raz, drugie odłożenie zablokowane (0.3477ms)
+✔ mieszana kolejka: poprawna, pominięta i błędna odpowiedź nie zmieniają mianownika (0.1178ms)
+✔ wznowienie na każdym etapie zachowuje kolejność i ocenę (0.2205ms)
+✔ uszkodzony lub niezgodny zapis nie psuje uruchomienia (0.4223ms)
+✔ grafika poprawnie ucieka znaki HTML i zachowuje polskie litery (0.2171ms)
+✔ wszystkie lokalne odnośniki startowe istnieją i działają w podkatalogu (1.4571ms)
+✔ każdy skrypt przechodzi parsowanie (3.0878ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.6596
