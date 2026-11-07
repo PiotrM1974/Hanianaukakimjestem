@@ -14,7 +14,7 @@
   }
   function render(item) {
     const { steps, title, caption } = item.visual;
-    const colors = { language: ['#f0ebfc', '#6352a3'], spelling: ['#fff0de', '#9b4e22'], stories: ['#e8f4e9', '#276b54'], writing: ['#e7f2fa', '#235f8b'] };
+    const colors = { language: ['#f0ebfc', '#6352a3'], spelling: ['#fff0de', '#9b4e22'], stories: ['#e8f4e9', '#276b54'], writing: ['#e7f2fa', '#235f8b'], math: ['#e2f3ef', '#236b70'] };
     const [pale, ink] = colors[item.category];
     function diagram(narrow) {
     const width = narrow ? 330 : 640;

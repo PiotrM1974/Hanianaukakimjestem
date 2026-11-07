@@ -1,4 +1,4 @@
-# Przegląd wszystkich 70 tematów
+# Przegląd wszystkich 101 tematów
 
 Wykaz do kontroli treści. Numery nie są kolejnością sesji, ponieważ sesje są losowane. Klucze źródeł objaśnia SOURCES.md.
 
@@ -92,3 +92,39 @@ Wykaz do kontroli treści. Numery nie są kolejnością sesji, ponieważ sesje s
 | writing-09 | Znaki szczególne | Co może być znakiem szczególnym w opisie wyglądu? | Piegi na nosie | Zauważ szczegół | zpe-writing, nask |
 | writing-10 | Akapit | Po co dzielimy tekst na akapity? | Żeby uporządkować tekst i oddzielić myśli | Dwie myśli, dwa akapity | zpe-writing, nask |
 
+
+## Matematyka · liczby
+
+| ID | Temat | Pytanie | Poprawna odpowiedź | Schemat | Źródła |
+| --- | --- | --- | --- | --- | --- |
+| math-01 | Po co są systemy liczbowe | Czym jest system liczbowy? | Umownym sposobem zapisywania liczb | Różne znaki, ta sama myśl | math-textbook-58-69, strony 58–59 |
+| math-02 | System dziesiątkowy | Ile cyfr ma system dziesiątkowy? | 10 cyfr: od 0 do 9 | Dziesięć cyfr | math-textbook-58-69, strona 59 |
+| math-03 | Cyfra i liczba | Ile cyfr ma liczba 407? | Trzy | Liczba 407 | math-textbook-58-69, strona 59 |
+| math-04 | Jedności, dziesiątki i setki | Jaką wartość ma cyfra 6 w liczbie 368? | 60 | Liczba 368 | math-textbook-58-69, strony 59–60 |
+| math-05 | Tysiące i większe rzędy | Jaki rząd jest bezpośrednio po setkach? | Tysiące | Kolejne rzędy | math-textbook-58-69, strony 59–60 |
+| math-06 | Zera jako miejsca w liczbie | Co oznacza zero w liczbie 5 072? | Brak setek | 5 072 | math-textbook-58-69, strony 59–60 |
+| math-07 | Rozkład liczby na rzędy | Który rozkład liczby 2 306 jest poprawny? | 2 000 + 300 + 6 | Rozkład 2 306 | math-textbook-58-69, strony 59–60 |
+| math-08 | Odczytywanie dużych liczb | Jak czytamy liczbę 12 345? | Dwanaście tysięcy trzysta czterdzieści pięć | 12 345 | math-textbook-58-69, strony 60–61 |
+| math-09 | Zapisywanie liczb słowami | Jak zapiszesz słowami 2 040? | Dwa tysiące czterdzieści | 2 040 | math-textbook-58-69, strona 61 |
+| math-10 | Zapisywanie liczb cyframi | Jak zapiszesz cyframi „pięć tysięcy osiem”? | 5 008 | Pięć tysięcy osiem | math-textbook-58-69, strony 60–61 |
+| math-11 | Zaokrąglony zapis liczby | Co oznacza zapis 8 mln? | 8 milionów | Skróty dużych liczb | math-textbook-58-69, strona 60 |
+| math-12 | Najmniejsza i największa liczba | Jaka jest największa liczba trzycyfrowa? | 999 | Liczby trzycyfrowe | math-textbook-58-69, strona 61 |
+| math-13 | Porządek liczb naturalnych | Która liczba leży dalej w prawo na osi: 408 czy 480? | 480 | Oś liczbowa | math-textbook-58-69, strony 62–63 |
+| math-14 | Porównywanie liczb | Który znak pasuje: 7240 __ 6891? | > | Porównujemy od lewej | math-textbook-58-69, strona 64 |
+| math-15 | Porządkowanie kilku liczb | Który zestaw jest rosnący? | 235, 253, 325 | Rosnąco | math-textbook-58-69, strona 64 |
+| math-16 | Liczby na osi | Co trzeba ustalić, aby odczytać punkt na osi liczbowej? | Wartość kroku między kreskami | Odczyt osi | math-textbook-58-69, strona 62 |
+| math-17 | Liczby palindromiczne | Która liczba jest palindromiczna? | 4884 | 4884 z obu stron | math-textbook-58-69, strony 63–65 |
+| math-18 | Mnożenie przez 10, 100 i 1000 | Ile wynosi 420 × 100? | 42 000 | Mnożenie przez 100 | math-textbook-58-69, strony 66–68 |
+| math-19 | Dzielenie przez 10, 100 i 1000 | Ile wynosi 45 000 ÷ 100? | 450 | Dzielenie przez 100 | math-textbook-58-69, strony 66–69 |
+| math-20 | Mnożenie przez pełne dziesiątki | Jak obliczyć 12 × 400? | 12 × 4, a potem dopisać dwa zera | 12 × 400 | math-textbook-58-69, strony 66–68 |
+| math-21 | Dzielenie przez pełne dziesiątki | Ile wynosi 6 000 ÷ 300? | 20 | 6 000 ÷ 300 | math-textbook-58-69, strony 66–69 |
+| math-22 | Dodawanie i odejmowanie pełnych setek | Ile wynosi 24 000 + 17 000? | 41 000 | 24 000 + 17 000 | math-textbook-58-69, strona 67 |
+| math-23 | Uzupełnianie do pełnej liczby | Ile trzeba dodać do 8 050, aby otrzymać 10 000? | 1 950 | Droga do 10 000 | math-textbook-58-69, strona 67 |
+| math-24 | Znajdowanie brakującego czynnika | Jaka liczba pasuje: 40 · ? = 2 000? | 50 | 40 · ? = 2 000 | math-textbook-58-69, strona 68 |
+| math-25 | Rachunki w zadaniu tekstowym | Co warto zrobić po obliczeniu wyniku zadania? | Sprawdzić, czy odpowiada na pytanie | Plan rozwiązania | math-textbook-58-69, strony 66–69 |
+| math-26 | Odczytywanie wartości w tabeli i na mapie | Co sprawdzasz przed porównaniem danych z tabeli? | Nagłówki i jednostki | Czytam dane | math-textbook-58-69, strona 60 |
+| math-27 | Znaki w zapisie rzymskim | Jaką liczbę oznacza zapis rzymski IX? | 9 | I przed X odejmujemy | math-textbook-58-69, strona 58 |
+| math-28 | Kropki, kreski i zero w systemie Majów | Co oznaczała muszla w zapisie Majów? | Zero | Znaki Majów | math-textbook-58-69, math-maya-smithsonian, math-maya-history, strona 58 |
+| math-29 | Obliczenia z pieniędzmi | W skarbonce są 3 banknoty po 100 zł i 2 monety po 10 zł. Ile to razem? | 320 zł | Liczymy wartość pieniędzy | math-textbook-58-69, strona 63 |
+| math-30 | Znaki liczbowe w starożytnym Egipcie | Jak zapisywano liczby w starożytnym Egipcie? | Specjalnymi znakami dla kolejnych potęg dziesięciu | Egipski zapis liczb | math-textbook-58-69, math-egypt-openlearn, strona 58 |
+| math-31 | Miliard, bilion i biliard | Który zapis oznacza jeden bilion? | 1 000 000 000 000 | Nazwy wielkich liczb | math-textbook-58-69, math-large-zpe, strona 59 |

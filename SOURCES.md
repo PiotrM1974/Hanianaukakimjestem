@@ -1,11 +1,16 @@
 # Źródła i decyzje redakcyjne
 
-Przegląd: **4 listopada 2026 r.** Treści objaśnień, pytania i schematy są autorskie; nie skopiowano ilustracji ani ćwiczeń z tych serwisów. Poniższe materiały służyły do sprawdzenia pojęć i zasad. Nie oznacza to recenzji aplikacji przez wskazane instytucje.
+Przegląd: **7 listopada 2026 r.** Treści objaśnień, pytania i schematy są autorskie; nie skopiowano ilustracji ani ćwiczeń z podręcznika lub wymienionych materiałów. Materiały poniżej służyły do sprawdzenia pojęć i zasad. Nie oznacza to recenzji aplikacji przez wskazane instytucje.
 
 ## Wykorzystane materiały
 
 | Klucz w bazie | Materiał | Wykorzystany zakres |
 | --- | --- | --- |
+| `math-textbook-58-69` | Zdjęcia stron 58–69 podręcznika matematyki, przesłane przez opiekuna | Systemy zapisywania liczb, system dziesiątkowy i wartość pozycyjna cyfr, odczytywanie i zapisywanie dużych liczb, porównywanie, oś liczbowa, liczby palindromiczne i rachunki pamięciowe. Treści i pytania opracowano samodzielnie na podstawie zakresu zdjęć; nie kopiowano ćwiczeń ani ilustracji. Dane wydania nie były widoczne w przekazanym materiale. |
+| `math-egypt-openlearn` | [The Open University: Egyptian mathematics](https://www.open.edu/openlearn/science-maths-technology/mathematics-statistics/egyptian-mathematics/content-section-1.1.2) | Zapis hieroglificzny jako powtarzalny zapis dziesiętny; znaki dla potęg dziesięciu. |
+| `math-maya-smithsonian` | [Smithsonian National Museum of the American Indian: Maya Math Game](https://maya.nmai.si.edu/maya-sun/maya-math-game?game=practice-1) | Wartości znaków Majów: kropka 1, kreska 5, muszla 0. |
+| `math-maya-history` | [University of St Andrews: Mayan mathematics](https://mathshistory.st-andrews.ac.uk/HistTopics/Mayan_mathematics/) | System liczbowy Majów opisywany jako dwudziestkowy; kalendarzowy zapis ma szczególny układ pozycji. |
+| `math-large-zpe` | [ZPE: Przedrostki SI i nazwy dużych liczb](https://zpe.gov.pl/a/przeczytaj/Dq6l1iVgq) | Miliard = 10⁹, bilion = 10¹², biliard = 10¹⁵. |
 | `zpe-sounds` | [ZPE: Wśród liter, głosek i sylab](https://zpe.gov.pl/a/wsrod-liter-glosek-i-sylab/D1411aqT6) | Głoska i litera, zapis samogłosek, dwuznaki, sylaby, rola i. |
 | `rjp` | [RJP: Zasady pisowni i interpunkcji polskiej, tekst obowiązujący od 2026 r.](https://rjp.pan.pl/app/uploads/2025/12/2-zalacznik-do-komunikatu-po-redakcji-do-druku11-25-wersja-ostateczna-jednolita.pdf) | Rozdziały 2.2, 3.2 oraz 8: ó/u, miękkość, dzielenie wyrazów. [Strona zbiorcza RJP](https://rjp.pan.pl/zmiany-pisowni-2026-3/). |
 | `zpe-spelling` | [ZPE: pakiet materiałów, zasady ó/u](https://zpe.gov.pl/pobierz/R4rXx7N3rY4nx) | Szkolne przykłady wymian i zakończeń. Przy wyjątkach nadrzędnym źródłem pozostaje RJP. |
@@ -41,6 +46,18 @@ Schematy są wsparciem, nie zastępują czytania ani rozumowania. Ich semantyczn
 
 ## Granice weryfikacji
 
-Nie udostępniono źródłowego podsumowania podręcznika ani konkretnego wydania rozdziału. Nie można potwierdzić pełnego pokrycia jego treści. Baza zachowuje układ 20 + 25 + 15 + 10 i zakres przesłanej aplikacji, poprawia błędy oraz część powtórzeń. Nie oznacza to 70 rozłącznych reguł: poszczególne zasady są ćwiczone na kilku przykładach.
+Nie udostępniono źródłowego podsumowania podręcznika ani konkretnego wydania rozdziału. Nie można potwierdzić pełnego pokrycia jego treści. Część polonistyczna zachowuje układ 20 + 25 + 15 + 10 i zawiera 70 tematów. Dodano do niej 31 tematów matematycznych na podstawie zdjęć ze stron 58–69. Nie oznacza to 101 rozłącznych reguł: poszczególne zasady są ćwiczone na kilku przykładach.
 
 Nie przeprowadzono formalnej recenzji przez nauczyciela Hani ani testu użyteczności z dzieckiem. Aplikacja nie daje szkolnych ocen, diagnoz psychologicznych ani gwarancji wyników w nauce.
+
+## Uzupełnienie matematyczne
+
+Dodano 31 zagadnień matematycznych na podstawie zdjęć z zakresu stron 58–69. Każdy klucz odpowiedzi został ręcznie przeliczony lub porównany z materiałem źródłowym; historyczne informacje o zapisie Majów, Egipcjan i nazwach dużych liczb mają wskazane dodatkowe źródła. Podpisy i przykłady w aplikacji są autorskie. Zakres nie potwierdza pełnej zgodności z całym podręcznikiem ani z materiałem omawianym w klasie.
+
+
+
+
+## Audyt merytoryczny
+
+7 listopada 2026 r. ręcznie przejrzano pytania, klucze odpowiedzi i objaśnienia we wszystkich 101 tematach. Wyniki rachunków z 31 tematów matematycznych przeliczono niezależnie. Zasady ortograficzne sprawdzono względem aktualnie wskazanych zasad RJP; fakty o hymnie i bezpieczeństwie sieci mają osobne źródła. Historyczne przykłady liczbowe mają dodatkowe źródła zapisane powyżej. Testy automatyczne weryfikują strukturę i zachowanie aplikacji, nie prawdziwość definicji.
+

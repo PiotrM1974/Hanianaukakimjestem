@@ -1,8 +1,8 @@
 {
-  "name": "Małe kroki · Polski z Hanią",
+  "name": "Małe kroki · Nauka z Hanią",
   "short_name": "Małe kroki",
   "lang": "pl",
-  "description": "Język polski dla klasy 4. Spokojna nauka, własne schematy i powtórki.",
+  "description": "Język polski i matematyka dla klasy 4. Spokojna nauka, własne schematy i powtórki.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,3 +10,4 @@
   "theme_color": "#f6f4ee",
   "icons": [{ "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
 }
+

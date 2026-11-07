@@ -1,6 +1,6 @@
-# Małe kroki · Polski z Hanią
+# Małe kroki · Nauka z Hanią
 
-Gotowa, statyczna aplikacja do powtórki języka polskiego dla klasy 4. Nie wymaga instalowania pakietów, serwera aplikacji, kluczy API ani płatnych usług. Wersja 1.0, 4 listopada 2026 r.
+Gotowa, statyczna aplikacja do powtórki języka polskiego i matematyki dla klasy 4. Nie wymaga instalowania pakietów, serwera aplikacji, kluczy API ani płatnych usług. Wersja 1.1, 7 listopada 2026 r.
 
 ## Najkrótsza instrukcja publikacji na GitHub Pages
 
@@ -20,6 +20,7 @@ Minimalny komplet do publikacji:
 index.html
 styles.css
 content.js
+math-content.js
 core.js
 visuals.js
 app.js
@@ -49,7 +50,7 @@ Syntezator mowy jest dodatkiem. Dostępność i jakość polskiego głosu zależ
 - „Odkładam na koniec” przenosi temat do osobnej kolejki. Tematy z tej kolejki nie mogą być ponownie odkładane.
 - Wynik odnosi się do danej sesji. Powtórki tworzą nową sesję. „Przećwiczone poprawnie” oznacza co najmniej jedną poprawną odpowiedź, a nie diagnozę opanowania materiału.
 
-Szybki test losuje 15 różnych pytań z całej bazy, bez teorii przed odpowiedzią i bez limitu czasu. Biblioteczka pozwala czytać każdy temat bez rozpoczynania sesji.
+Szybki test losuje 15 różnych pytań z całej bazy, bez teorii przed odpowiedzią i bez limitu czasu. Biblioteczka pozwala czytać każdy temat bez rozpoczynania sesji. Matematyka obejmuje 31 zagadnień opracowanych na podstawie przesłanych stron 58–69.
 
 ## Zapis i prywatność
 
@@ -61,7 +62,7 @@ Nie ma analityki, reklam, zewnętrznych obrazków, zewnętrznych czcionek ani fo
 
 ## Obrazki
 
-Wszystkie 70 tematów ma własny **schemat edukacyjny SVG**, generowany z lokalnych danych. Nie są to fotografie. Są to podpisane układy liter, sylab, par wyrazów i pojęć, dobrane do treści. Nie ma linków do Wikimedia, pobierania obrazków ani ukrywania błędów przez `onerror`.
+Wszystkie tematy mają własny **schemat edukacyjny SVG**, generowany z lokalnych danych. Nie są to fotografie. Są to podpisane układy liter, sylab, liczb, działań i pojęć, dobrane do treści. Nie ma linków do Wikimedia, pobierania obrazków ani ukrywania błędów przez `onerror`.
 
 Schemat ma wariant szeroki i wąski, opis dla czytników ekranu oraz podpis. Legendarne postacie nie są przedstawiane za pomocą przypadkowych portretów; schematy nie udają map ani dokumentacji historycznej.
 
@@ -86,3 +87,11 @@ Po zmianie plików zwiększ oznaczenie `VERSION` w `sw.js` i prześlij pliki do 
 To pomoc edukacyjna opracowana na podstawie przesłanego kodu i opisu zakresu. Nie otrzymano oryginalnego podręcznika ani jego podsumowania, dlatego nie potwierdzono zgodności strona po stronie z konkretnym wydaniem. Wersje legend mogą się różnić. Przed kartkówką warto porównać zakres z zeszytem i poleceniami nauczyciela.
 
 Nie deklarujemy absolutnej bezawaryjności. Testy obejmują podane w raporcie scenariusze. Emulacja rozmiaru telefonu lub tabletu w przeglądarce nie jest testem na fizycznym iPhonie ani w Safari.
+
+
+
+
+
+
+
+

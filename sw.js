@@ -1,7 +1,7 @@
 /* Zmień VERSION przy każdej publikacji zmienionych plików. */
-const VERSION = 'male-kroki-2026-11-04-v3';
+const VERSION = 'male-kroki-2026-11-07-v4';
 const CACHE = VERSION + '-' + self.registration.scope;
-const FILES = ['./', './index.html', './styles.css', './content.js', './core.js', './visuals.js', './app.js', './icon.svg', './manifest.webmanifest'];
+const FILES = ['./', './index.html', './styles.css', './content.js', './math-content.js', './core.js', './visuals.js', './app.js', './icon.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
   // Nowa wersja czeka na zamknięcie starych kart, aby nie mieszać plików.

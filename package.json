@@ -1,8 +1,8 @@
 {
   "name": "male-kroki-polski",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
-  "description": "Statyczna pomoc do nauki języka polskiego dla klasy 4",
+  "description": "Statyczna pomoc do nauki języka polskiego i matematyki dla klasy 4",
   "scripts": { "test": "node --test tests/*.test.cjs" },
   "engines": { "node": ">=20" }
 }
