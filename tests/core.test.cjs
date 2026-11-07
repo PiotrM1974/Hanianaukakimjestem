@@ -11,22 +11,31 @@ const V = require('../visuals.js');
 const answers = id => items.find(i=>i.id===id).answers;
 const itemFor = s => items.find(i=>i.id===s.current);
 const question = s => { s.stage = 'question'; return s; };
-test('101 unikalnych zagadnień, pięć kategorii i prawidłowe klucze odpowiedzi',()=>{
-  assert.equal(items.length,101);
-  assert.equal(new Set(items.map(i=>i.id)).size,101);
-  assert.equal(new Set(items.map(i=>i.question)).size,101);
-  assert.deepEqual(categories.map(c=>items.filter(i=>i.category===c.id).length),[20,25,15,10,31]);
+test('159 unikalnych zagadnień, pięć kategorii i prawidłowe klucze odpowiedzi',()=>{
+  assert.equal(items.length,159);
+  assert.equal(new Set(items.map(i=>i.id)).size,159);
+  assert.equal(new Set(items.map(i=>i.question)).size,159);
+  assert.deepEqual(categories.map(c=>items.filter(i=>i.category===c.id).length),[20,25,15,10,89]);
   for(const i of items){
-    assert.ok(i.theory.length>60 && i.recall.length>10);
+    assert.ok(i.theory.trim());
+    if (i.category === 'math') assert.ok(i.solution.length && i.solution.every(step => step.trim()));
+    else assert.ok(i.recall.length > 10);
     assert.equal(i.answers.length,3);
     assert.equal(new Set(i.answers).size,3);
     assert.ok(Number.isInteger(i.correct) && i.correct>=0 && i.correct<3);
     assert.ok(i.sources.length);
   }
 });
-test('każdy temat ma dwa kompletne, dostępne warianty schematu bez zewnętrznych zasobów',()=>{
+test('schematy i tablice są kompletne i korzystają tylko z zasobów aplikacji',()=>{
   for(const i of items){
     const svg = V.render(i);
+    if (i.category === 'math') {
+      assert.match(svg, /class="class-board"/, i.id);
+      assert.match(svg, /class="board-steps"/, i.id);
+      assert.ok(i.visual.steps.length >= 2, i.id);
+      assert.ok(!/<image|<script|<foreignObject|href=|url\(/i.test(svg), i.id);
+      continue;
+    }
     assert.equal((svg.match(/<svg /g)||[]).length,2,i.id);
     assert.equal((svg.match(/<title /g)||[]).length,2,i.id);
     assert.equal((svg.match(/<desc /g)||[]).length,2,i.id);
@@ -44,7 +53,7 @@ test('schematy wersów i strofy nie zawijają jednego wersu do dwóch linijek',(
     for(const step of item.visual.steps)assert.equal(V.lines(step.split('|')[0]).length,1,item.id);
   }
 });
-test('pełna sesja 101 pytań kończy się dokładnie wynikiem 101/101',()=>{
+test('pełna sesja 159 pytań kończy się dokładnie wynikiem 159/159',()=>{
   const s=C.createSession(items.map(i=>i.id),'learn'); C.advance(s,answers);
   let visits=0;
   while(s.stage!=='done'){
@@ -52,9 +61,9 @@ test('pełna sesja 101 pytań kończy się dokładnie wynikiem 101/101',()=>{
     assert.equal(C.answer(s,i.correct,i.correct),true);
     assert.equal(C.answer(s,i.correct,i.correct),false);
     assert.ok(C.restore(JSON.stringify(s),items));
-    C.advance(s,answers); visits++; assert.ok(visits<=101);
+    C.advance(s,answers); visits++; assert.ok(visits<=159);
   }
-  assert.equal(visits,101); assert.deepEqual(C.summary(s),{total:101,completed:101,correct:101,wrong:[]});
+  assert.equal(visits,159); assert.deepEqual(C.summary(s),{total:159,completed:159,correct:159,wrong:[]});
   assert.ok(C.restore(JSON.stringify(s),items));
 });
 test('15 pytań testu bez duplikatów, wynik 0/15 i brak automatycznej pętli',()=>{
@@ -66,16 +75,16 @@ test('15 pytań testu bez duplikatów, wynik 0/15 i brak automatycznej pętli',(
   }
   assert.equal(s.stage,'done'); assert.equal(C.summary(s).correct,0); assert.equal(C.summary(s).wrong.length,15);
 });
-test('odłożenie wszystkich 101 pytań: powracają raz, drugie odłożenie zablokowane',()=>{
+test('odłożenie wszystkich 159 pytań: powracają raz, drugie odłożenie zablokowane',()=>{
   const s=C.createSession(items.map(i=>i.id),'learn'); C.advance(s,answers);
-  for(let n=0;n<101;n++) assert.equal(C.skip(s,answers),true);
+  for(let n=0;n<159;n++) assert.equal(C.skip(s,answers),true);
   assert.equal(s.reviewing,true); assert.equal(C.skip(s,answers),false);
   assert.ok(C.restore(JSON.stringify(s),items));
   let n=0;
   while(s.stage!=='done'){
     question(s); const i=itemFor(s); C.answer(s,i.correct,i.correct); C.advance(s,answers); n++;
   }
-  assert.equal(n,101); assert.equal(C.summary(s).completed,101);
+  assert.equal(n,159); assert.equal(C.summary(s).completed,159);
 });
 test('mieszana kolejka: poprawna, pominięta i błędna odpowiedź nie zmieniają mianownika',()=>{
   const ids=items.slice(0,3).map(i=>i.id), s=C.createSession(ids,'learn',()=>0);

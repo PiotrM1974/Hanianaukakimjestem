@@ -1,6 +1,6 @@
 # Małe kroki · Nauka z Hanią
 
-Gotowa, statyczna aplikacja do powtórki języka polskiego i matematyki dla klasy 4. Nie wymaga instalowania pakietów, serwera aplikacji, kluczy API ani płatnych usług. Wersja 1.1, 7 listopada 2026 r.
+Gotowa, statyczna aplikacja do powtórki języka polskiego i matematyki dla klasy 4. Nie wymaga instalowania pakietów, serwera aplikacji, kluczy API ani płatnych usług. Wersja 1.3, 7 listopada 2026 r.
 
 ## Najkrótsza instrukcja publikacji na GitHub Pages
 
@@ -50,7 +50,7 @@ Syntezator mowy jest dodatkiem. Dostępność i jakość polskiego głosu zależ
 - „Odkładam na koniec” przenosi temat do osobnej kolejki. Tematy z tej kolejki nie mogą być ponownie odkładane.
 - Wynik odnosi się do danej sesji. Powtórki tworzą nową sesję. „Przećwiczone poprawnie” oznacza co najmniej jedną poprawną odpowiedź, a nie diagnozę opanowania materiału.
 
-Szybki test losuje 15 różnych pytań z całej bazy, bez teorii przed odpowiedzią i bez limitu czasu. Biblioteczka pozwala czytać każdy temat bez rozpoczynania sesji. Matematyka obejmuje 31 zagadnień opracowanych na podstawie przesłanych stron 58–69.
+Test z matematyki losuje 30 różnych pytań z 89 zagadnień matematycznych. Test mieszany losuje 15 pytań z całej bazy. Oba testy działają bez limitu czasu. Biblioteczka pozwala czytać każdy temat bez rozpoczynania sesji. W matematyce każde zagadnienie ma prostą regułę, przykład na tablicy i rozwiązanie w punktach. W nauce można wrócić do przykładu podczas zadania. Przycisk „Matematyka od podstaw” wybiera do trzech zadań w ustalonej kolejności.
 
 ## Zapis i prywatność
 

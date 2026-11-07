@@ -1,5 +1,5 @@
 /* Zmień VERSION przy każdej publikacji zmienionych plików. */
-const VERSION = 'male-kroki-2026-11-07-v4';
+const VERSION = 'male-kroki-2026-11-07-v6';
 const CACHE = VERSION + '-' + self.registration.scope;
 const FILES = ['./', './index.html', './styles.css', './content.js', './math-content.js', './core.js', './visuals.js', './app.js', './icon.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => {

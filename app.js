@@ -37,6 +37,10 @@
     main.focus({ preventScroll: true }); window.scrollTo(0, 0);
   }
   const action = (label, name, cls = '', extra = '') => `<button class="btn ${cls}" data-action="${name}" ${extra}>${label}</button>`;
+  const MIXED_QUIZ_LENGTH = 15;
+  const MATH_QUIZ_LENGTH = 30;
+  const MATH_STARTER_IDS = ['math-03', 'math-04', 'math-89', 'math-06', 'math-07', 'math-08', 'math-14', 'math-15', 'math-50', 'math-22', 'math-54', 'math-78'];
+  const isMath = item => item?.category === 'math';
   function home() {
     save();
     const count = learned(items), reviews = reviewIds().length;
@@ -44,47 +48,68 @@
     draw(`${unfinished ? `<aside class="resume"><p><strong>Twój mały krok czeka.</strong><br>Ukończono ${C.summary(session).completed} z ${session.ids.length} pytań. Możesz wrócić do sesji.</p>${action('Kontynuuj →', 'resume', 'secondary')}</aside>` : ''}
       <section class="hero"><div><p class="eyebrow">JĘZYK POLSKI · MATEMATYKA</p><h1>Cześć, Haniu.<br>Czas na <em>mały krok.</em></h1><p class="intro">Odkrywaj słowa i opowieści, poznawaj liczby i ćwicz po trochu. Tutaj możesz się zastanowić, pomylić i spróbować jeszcze raz.</p><div class="meta-row"><span><i class="dot" aria-hidden="true"></i>${items.length} zagadnień</span><span>Bez pośpiechu</span><span>Własne schematy</span></div></div>${V.hero()}</section>
       <div class="section-label"><h2>Jak dziś poćwiczymy?</h2><span>Wybierz swój sposób</span></div>
-      <div class="path-grid"><section class="path-card primary"><div class="card-top"><span class="small-icon" aria-hidden="true">Aa</span><span class="badge">POLECANE NA POCZĄTEK</span></div><p class="step-label">01 / ODKRYWAM</p><h2>Uczę się krok po kroku</h2><p>Najpierw wyjaśnienie i schemat. Potem chwila na przypomnienie z pamięci i jedno pytanie.</p><div class="settings"><div class="field"><label for="learn-category">Temat</label><select id="learn-category"><option value="all">Wszystkie tematy</option>${categories.map(c => `<option value="${c.id}">${e(c.short)}</option>`).join('')}</select></div><div class="field"><label for="learn-length">Długość sesji</label><select id="learn-length"><option value="10">10 zagadnień</option><option value="5">5 zagadnień</option><option value="all">Cały wybrany temat</option></select></div></div>${action('Zaczynam naukę <span aria-hidden="true">→</span>', 'start-learn')}</section>
-      <section class="path-card"><div class="card-top"><span class="small-icon" aria-hidden="true">✓</span><span class="badge">BEZ LIMITU CZASU</span></div><p class="step-label">02 / SPRAWDZAM</p><h2>Co już pamiętam?</h2><p>15 losowych pytań ze wszystkich tematów. Sprawdź, co już umiesz i do czego warto wrócić.</p>${action('Rozwiązuję szybki test →', 'start-quiz', 'secondary')}<p class="micro">Wynik jest wskazówką do nauki, nie szkolną oceną.</p></section></div>
+      <div class="path-grid"><section class="path-card primary"><div class="card-top"><span class="small-icon" aria-hidden="true">Aa</span><span class="badge">POLECANE NA POCZĄTEK</span></div><p class="step-label">01 / ODKRYWAM</p><h2>Uczę się krok po kroku</h2><p>Obejrzyj przykład. Potem rozwiąż podobne zadanie.</p><div class="settings"><div class="field"><label for="learn-category">Temat</label><select id="learn-category"><option value="all">Wszystkie tematy</option>${categories.map(c => `<option value="${c.id}">${e(c.short)}</option>`).join('')}</select></div><div class="field"><label for="learn-length">Długość sesji</label><select id="learn-length"><option value="10">10 zagadnień</option><option value="5">5 zagadnień</option><option value="20">20 zagadnień</option><option value="all">Cały wybrany temat</option></select></div></div>${action('Zaczynam naukę <span aria-hidden="true">→</span>', 'start-learn')}<div class="math-starter">${action('Matematyka od podstaw · do 3 zadań', 'start-math-basics', 'secondary')}</div></section>
+      <section class="path-card"><div class="card-top"><span class="small-icon" aria-hidden="true">✓</span><span class="badge">BEZ LIMITU CZASU</span></div><p class="step-label">02 / SPRAWDZAM</p><h2>Co już pamiętam?</h2><p>Wybierz test z matematyki albo wylosuj pytania z obu przedmiotów.</p><div class="wide-actions">${action(`Test z matematyki · ${MATH_QUIZ_LENGTH} pytań`, 'start-math-quiz')}${action(`Test mieszany · ${MIXED_QUIZ_LENGTH} pytań`, 'start-quiz', 'secondary')}</div><p class="micro">Wynik jest wskazówką do nauki, nie szkolną oceną.</p></section></div>
       <div class="section-label"><h2>Twoja mapa odkryć</h2><span>Poprawnie przećwiczone: ${count} / ${items.length}</span></div><section class="topics" aria-label="Tematy nauki">${categories.map((c, i) => { const list = items.filter(x => x.category === c.id), n = learned(list); return `<button class="topic" data-action="category" data-id="${c.id}" style="--topic:${c.color}"><span class="topic-index" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><strong>${e(c.name)}</strong><small>${n} / ${list.length} przećwiczonych poprawnie</small><div class="progress-track" aria-hidden="true"><span style="width:${n / list.length * 100}%"></span></div></button>`; }).join('')}</section>
       <div class="bottom-strip"><p>${reviews ? `Do spokojnej powtórki: <strong>${reviews}</strong>. Każda próba pomaga w nauce.` : 'Każdy temat możesz otworzyć także w biblioteczce.'}</p><div>${reviews ? `<button class="text-button" data-action="review">Powtarzam trudniejsze (${reviews}) →</button> · ` : ''}<button class="text-button" data-action="library">Biblioteczka ${items.length} tematów →</button></div></div>`, 'home');
   }
-  function start(mode, category = 'all', length = 10, ids = null) {
+  function start(mode, category = 'all', length = 10, ids = null, preserveOrder = false, showQuestion = false) {
     let pool = ids || items.filter(item => category === 'all' || item.category === category).map(item => item.id);
     if (!pool.length) return home();
-    pool = C.shuffle(pool);
-    const limit = mode === 'quiz' ? 15 : length === 'all' ? pool.length : Number(length);
-    session = C.createSession(pool.slice(0, limit), mode);
-    C.advance(session, getAnswers); save(); renderSession();
+    if (!preserveOrder) pool = C.shuffle(pool);
+    const limit = length === 'all' ? pool.length : Number(length);
+    session = C.createSession(pool.slice(0, limit), mode, Math.random, { preserveOrder });
+    C.advance(session, getAnswers);
+    if (showQuestion) session.stage = 'question';
+    save(); renderSession();
+  }
+  function startMathBasics() {
+    const remaining = MATH_STARTER_IDS.filter(id => !progress[id]?.ok || progress[id]?.review);
+    const pool = remaining.length ? remaining : MATH_STARTER_IDS;
+    start('learn', 'math', 3, pool, true);
   }
   function progressHeader() {
     const stats = C.summary(session);
-    return `<div class="session-top"><button class="text-button" data-action="home">← Menu <span class="sr-only">(postęp zostanie zapisany)</span></button><span>${session.mode === 'learn' ? 'Nauka' : 'Szybki test'} · ukończono ${stats.completed} z ${stats.total}</span></div><div class="progress-track session-progress" role="progressbar" aria-label="Ukończone pytania" aria-valuemin="0" aria-valuemax="${stats.total}" aria-valuenow="${stats.completed}"><span style="width:${100 * stats.completed / stats.total}%"></span></div>`;
+    const label = session.mode === 'learn' ? 'Nauka' :
+      session.ids.length === MATH_QUIZ_LENGTH && session.ids.every(id => byId.get(id).category === 'math') ? 'Test z matematyki' : 'Szybki test';
+    return `<div class="session-top"><button class="text-button" data-action="home">← Menu <span class="sr-only">(postęp zostanie zapisany)</span></button><span>${label} · ukończono ${stats.completed} z ${stats.total}</span></div><div class="progress-track session-progress" role="progressbar" aria-label="Ukończone pytania" aria-valuemin="0" aria-valuemax="${stats.total}" aria-valuenow="${stats.completed}"><span style="width:${100 * stats.completed / stats.total}%"></span></div>`;
   }
   function audioControl() { return `<div class="audio-row"><button class="text-button" data-action="audio">▷ Posłuchaj wyjaśnienia</button><span class="audio-status" id="audio-status" role="status"></span></div>`; }
   function renderSession() {
     if (!session) return home();
     if (session.stage === 'done') return results();
     const item = byId.get(session.current), cat = categoryOf(item);
+    const math = isMath(item);
+    const showingExample = math && (session.stage === 'theory' || session.stage === 'recall');
     let content = '';
-    if (session.stage === 'theory') {
+    if (showingExample) {
+      content = `<h1>${e(item.title)}</h1><p class="theory">${e(item.theory)}</p>${V.render(item)}${audioControl()}<div class="actions">${action('Rozwiąż podobne zadanie →', 'question')}${session.stage === 'theory' && !session.reviewing ? action('Odłóż na koniec', 'skip', 'ghost') : ''}</div>`;
+    } else if (session.stage === 'theory') {
       content = `<h1>${e(item.title)}</h1>${audioControl()}<p class="theory">${e(item.theory)}</p>${V.render(item)}<p class="recall-hint">Przyjrzyj się schematowi. Za chwilę schowamy wyjaśnienie i spróbujesz przypomnieć je sobie własnymi słowami.</p><div class="actions">${session.reviewing ? '<span class="micro">Wracamy do odłożonych pytań — już ich nie odkładamy.</span>' : action('Odkładam na koniec', 'skip', 'ghost')}${action('Rozumiem — sprawdzam pamięć →', 'recall')}</div>`;
     } else if (session.stage === 'recall') {
       content = `<div class="recall-panel"><div class="memory-symbol" aria-hidden="true">?</div><p class="eyebrow">CHWILA DLA PAMIĘCI</p><h1>Teraz Twoimi słowami</h1><p>${e(item.recall)}</p><small>Powiedz odpowiedź na głos lub w myślach. Nie musisz jej wpisywać.</small></div><div class="actions">${action('Potrzebuję przypomnienia', 'back-theory', 'ghost')}${action('Przechodzę do pytania →', 'question')}</div>`;
     } else {
       const answered = session.stage === 'feedback';
-      content = `<h1>${e(item.question)}</h1><p class="micro">Wybierz jedną odpowiedź. ${session.mode === 'learn' ? 'Wyjaśnienie jest teraz schowane.' : 'Masz tyle czasu, ile potrzebujesz.'}</p><div class="answers">${session.order.map((original, i) => {
+      const hint = math && session.mode === 'learn' && !answered
+        ? `<details class="math-hint"><summary>Zobacz przykład z tablicy</summary>${V.render(item)}</details>` : '';
+      const instruction = math ? 'Wybierz jedną odpowiedź.' :
+        `Wybierz jedną odpowiedź. ${session.mode === 'learn' ? 'Wyjaśnienie jest teraz schowane.' : 'Masz tyle czasu, ile potrzebujesz.'}`;
+      content = `<h1${math ? ' class="math-question"' : ''}>${e(item.question)}</h1><p class="micro">${instruction}</p>${hint}<div class="answers">${session.order.map((original, i) => {
         let cls = '', state = '';
         if (answered && original === item.correct) { cls = 'correct'; state = '✓ Poprawna'; }
         else if (answered && original === session.choice) { cls = 'wrong'; state = 'Twoja'; }
         return `<button class="answer ${cls}" data-action="answer" data-index="${original}" ${answered ? 'disabled' : ''}><span class="answer-letter" aria-hidden="true">${String.fromCharCode(65 + i)}</span><span>${e(item.answers[original])}</span>${state ? `<span class="answer-state">${state}</span>` : ''}</button>`;
       }).join('')}</div>`;
-      if (answered) {
+      if (answered && math) {
         const correct = session.results[item.id];
-        content += `<div class="feedback ${correct ? '' : 'error'}" role="status"><strong>${correct ? 'Tak, właśnie tak!' : 'Jeszcze to poćwiczymy. To część nauki.'}</strong><p>${correct ? e(item.theory) : `Poprawna odpowiedź: <strong>${e(item.answers[item.correct])}</strong>${e(item.theory)}`}</p></div>${correct ? '' : V.render(item)}<div class="actions">${action('Następny krok →', 'next')}</div>`;
+        const label = correct ? 'Tak, to poprawna odpowiedź.' : 'Zobacz poprawną odpowiedź.';
+        content += `<div class="feedback math-feedback ${correct ? '' : 'error'}" role="status"><strong>${label}</strong><p class="board-answer">${e(item.answers[item.correct])}</p>${V.boardSteps(item.solution)}</div><div class="actions">${action('Następny krok →', 'next')}</div>`;
+      } else if (answered) {
+        const correct = session.results[item.id];
+        content += `<div class="feedback ${correct ? '' : 'error'}" role="status"><strong>${correct ? 'Tak, właśnie tak!' : 'Jeszcze to poćwiczymy. To część nauki.'}</strong><p>${correct ? '' : `Poprawna odpowiedź: <strong>${e(item.answers[item.correct])}</strong>. `}${e(item.feedback || item.theory)}</p></div>${correct ? '' : V.render(item)}<div class="actions">${action('Następny krok →', 'next')}</div>`;
       }
     }
-    draw(`<div class="session-wrap">${progressHeader()}<article class="lesson"><div class="session-header"><p class="eyebrow">${e(cat.short)} · ${e(item.title)}</p><span class="chip">${session.stage === 'theory' ? 'Poznaję' : session.stage === 'recall' ? 'Przypominam' : 'Ćwiczę'}</span></div>${content}</article></div>`, 'session');
+    draw(`<div class="session-wrap">${progressHeader()}<article class="lesson"><div class="session-header"><p class="eyebrow">${e(cat.short)} · ${e(item.title)}</p><span class="chip">${showingExample ? 'Przykład' : session.stage === 'theory' ? 'Poznaję' : session.stage === 'recall' ? 'Przypominam' : 'Ćwiczę'}</span></div>${content}</article></div>`, 'session');
   }
   function submitAnswer(index) {
     if (!session) return;
@@ -112,11 +137,11 @@
   function openItem(id) {
     const item = byId.get(id); if (!item) return;
     libraryItem = item;
-    draw(`<div class="session-wrap"><div class="back-row"><button class="text-button" data-action="library">← Biblioteczka</button></div><article class="lesson"><p class="eyebrow">${e(categoryOf(item).name)}</p><h1>${e(item.title)}</h1>${audioControl()}<p class="theory">${e(item.theory)}</p>${V.render(item)}<p class="recall-hint">${e(item.recall)}</p><div class="actions">${action('Ćwiczę ten temat →', 'practice-item')}${action('Wracam do biblioteczki', 'library', 'secondary')}</div></article></div>`, 'item');
+    draw(`<div class="session-wrap"><div class="back-row"><button class="text-button" data-action="library">← Biblioteczka</button></div><article class="lesson"><p class="eyebrow">${e(categoryOf(item).name)}</p><h1>${e(item.title)}</h1>${audioControl()}<p class="theory">${e(item.theory)}</p>${V.render(item)}${isMath(item) ? '' : `<p class="recall-hint">${e(item.recall)}</p>`}<div class="actions">${action(isMath(item) ? 'Rozwiąż podobne zadanie →' : 'Ćwiczę ten temat →', 'practice-item')}${action('Wracam do biblioteczki', 'library', 'secondary')}</div></article></div>`, 'item');
   }
   function parent() {
     save();
-    draw(`<div class="parent-content"><button class="text-button" data-action="home">← Menu</button><p class="eyebrow">DLA RODZICA LUB OPIEKUNA</p><h1>Spokojna nauka.<br>Jasne zasady.</h1><p>To autorska pomoc do powtórki języka polskiego i matematyki dla klasy 4. Część matematyczna powstała na podstawie przesłanych zdjęć stron 58–69; nie jest oficjalnym dodatkiem do podręcznika i nie potwierdza pełnego pokrycia całego materiału.</p><h2>Jak korzystać</h2><ul><li>Zacznijcie od 5–10 zagadnień. Po kilku minutach można zrobić przerwę.</li><li>Po teorii aplikacja chowa wyjaśnienie. Dziecko próbuje powiedzieć je własnymi słowami, a potem odpowiada na pytanie.</li><li>Odkładane tematy wracają na końcu sesji. W drugiej kolejce nie można odkładać ich ponownie.</li><li>Po błędzie odpowiedź i wyjaśnienie pozostają na ekranie tak długo, jak potrzeba. Trudniejsze tematy czekają w powtórkach.</li><li>„Przećwiczone poprawnie” oznacza co najmniej jedną poprawną odpowiedź. Nie jest diagnozą trwałego opanowania wiedzy.</li></ul><h2>Treści i ilustracje</h2><p>Baza zawiera tematy z języka polskiego oraz 31 zagadnień matematycznych o systemie dziesiątkowym, zapisie i porównywaniu liczb oraz rachunkach pamięciowych. Legendy opisano jako opowieści, nie potwierdzone fakty. Każde zagadnienie ma własny podpisany schemat SVG. Schematy przedstawiają reguły i zależności; nie są historycznymi portretami ani mapami.</p><details><summary>Źródła do sprawdzenia zakresu</summary><ul><li><a href="https://zpe.gov.pl/a/wsrod-liter-glosek-i-sylab/D1411aqT6" target="_blank" rel="noopener noreferrer">ZPE: głoski, litery i sylaby</a></li><li><a href="https://rjp.pan.pl/zmiany-pisowni-2026-3/" target="_blank" rel="noopener noreferrer">Rada Języka Polskiego: zasady pisowni obowiązujące od 2026 r.</a></li><li><a href="https://www.prezydent.pl/dla-mediow/materialy-do-pobrania/hymn-rp" target="_blank" rel="noopener noreferrer">Oficjalny tekst hymnu RP</a></li><li><a href="https://zpe.gov.pl/a/legendarne-poczatki/DA9nUxt63" target="_blank" rel="noopener noreferrer">ZPE: legendarne początki</a></li><li><a href="https://wiedza.cert.pl/dobre-praktyki/hasla/" target="_blank" rel="noopener noreferrer">CERT Polska: bezpieczne hasła</a></li><li>Matematyka: zdjęcia stron 58–69 przesłane przez opiekuna; zakres i przykłady sprawdzono redakcyjnie.</li></ul><p>Pełniejsze zestawienie i uwagi redakcyjne: plik SOURCES.md w paczce aplikacji.</p></details><h2>Prywatność i zapis</h2><p>Nie ma kont, formularzy danych dziecka, reklam ani analityki. Postęp i bieżąca sesja są zapisywane tylko w pamięci tej przeglądarki. Nie synchronizują się między urządzeniami. Tryb prywatny lub wyczyszczenie danych strony może usunąć zapis. Hosting GitHub Pages może obsługiwać zwykłe dane techniczne połączenia.</p><h2>Czytanie na głos i internet</h2><p>Przycisk czytania korzysta z syntezatora systemu. Dostępność i wymowa polskiego głosu zależą od przeglądarki oraz ustawień urządzenia. Niektóre głosy potrzebują internetu; obsługą tekstu i sieci podczas syntezy zarządza dostawca głosu. Gdy polskiego głosu brakuje, wyjaśnienia pozostają dostępne do czytania.</p><p>Ilustracje i czcionki nie są pobierane z obcych serwerów. Po zapisaniu kompletnej aplikacji w pamięci podręcznej można używać jej offline. Stan gotowości pokazuje stopka; system może później usunąć pamięć strony. Linki do źródeł wymagają internetu.</p><h2>Wyczyść postęp</h2><p>Ta opcja usuwa lokalne odpowiedzi, powtórki i zapisaną sesję z tej przeglądarki.</p><details id="reset-section"><summary>Chcę wyczyścić lokalne postępy</summary><p>Usunięcie nie ma funkcji cofania.</p>${action('Usuwam postępy i sesję', 'clear-progress', 'ghost')}</details><p class="micro">Wersja 1.1 · przegląd treści: 7 listopada 2026 r.</p></div>`, 'parent');
+    draw(`<div class="parent-content"><button class="text-button" data-action="home">← Menu</button><p class="eyebrow">DLA RODZICA LUB OPIEKUNA</p><h1>Spokojna nauka.<br>Jasne zasady.</h1><p>To autorska pomoc do powtórki języka polskiego i matematyki dla klasy 4. Część matematyczna powstała na podstawie przesłanych zdjęć stron 58–69; nie jest oficjalnym dodatkiem do podręcznika i nie potwierdza pełnego pokrycia całego materiału.</p><h2>Jak korzystać</h2><ul><li>Zacznijcie od 5–10 zagadnień. Po kilku minutach można zrobić przerwę.</li><li>W matematyce dziecko ogląda przykład na tablicy i rozwiązuje podobne zadanie. Przykład można otworzyć podczas nauki. W języku polskim wyjaśnienie poprzedza przypomnienie z pamięci.</li><li>Odkładane tematy wracają na końcu sesji. W drugiej kolejce nie można odkładać ich ponownie.</li><li>Po błędzie odpowiedź i wyjaśnienie pozostają na ekranie tak długo, jak potrzeba. Trudniejsze tematy czekają w powtórkach.</li><li>„Przećwiczone poprawnie” oznacza co najmniej jedną poprawną odpowiedź. Nie jest diagnozą trwałego opanowania wiedzy.</li></ul><h2>Treści i ilustracje</h2><p>Baza zawiera tematy z języka polskiego oraz ${items.filter(item => item.category === 'math').length} zagadnień matematycznych o systemie dziesiątkowym, zapisie i porównywaniu liczb oraz rachunkach pamięciowych. Legendy opisano jako opowieści, nie potwierdzone fakty. Każde zagadnienie ma własny podpisany schemat SVG. Schematy przedstawiają reguły i zależności; nie są historycznymi portretami ani mapami.</p><details><summary>Źródła do sprawdzenia zakresu</summary><ul><li><a href="https://zpe.gov.pl/a/wsrod-liter-glosek-i-sylab/D1411aqT6" target="_blank" rel="noopener noreferrer">ZPE: głoski, litery i sylaby</a></li><li><a href="https://rjp.pan.pl/zmiany-pisowni-2026-3/" target="_blank" rel="noopener noreferrer">Rada Języka Polskiego: zasady pisowni obowiązujące od 2026 r.</a></li><li><a href="https://www.prezydent.pl/dla-mediow/materialy-do-pobrania/hymn-rp" target="_blank" rel="noopener noreferrer">Oficjalny tekst hymnu RP</a></li><li><a href="https://zpe.gov.pl/a/legendarne-poczatki/DA9nUxt63" target="_blank" rel="noopener noreferrer">ZPE: legendarne początki</a></li><li><a href="https://wiedza.cert.pl/dobre-praktyki/hasla/" target="_blank" rel="noopener noreferrer">CERT Polska: bezpieczne hasła</a></li><li>Matematyka: zdjęcia stron 58–69 przesłane przez opiekuna; zakres i przykłady sprawdzono redakcyjnie.</li></ul><p>Pełniejsze zestawienie i uwagi redakcyjne: plik SOURCES.md w paczce aplikacji.</p></details><h2>Prywatność i zapis</h2><p>Nie ma kont, formularzy danych dziecka, reklam ani analityki. Postęp i bieżąca sesja są zapisywane tylko w pamięci tej przeglądarki. Nie synchronizują się między urządzeniami. Tryb prywatny lub wyczyszczenie danych strony może usunąć zapis. Hosting GitHub Pages może obsługiwać zwykłe dane techniczne połączenia.</p><h2>Czytanie na głos i internet</h2><p>Przycisk czytania korzysta z syntezatora systemu. Dostępność i wymowa polskiego głosu zależą od przeglądarki oraz ustawień urządzenia. Niektóre głosy potrzebują internetu; obsługą tekstu i sieci podczas syntezy zarządza dostawca głosu. Gdy polskiego głosu brakuje, wyjaśnienia pozostają dostępne do czytania.</p><p>Ilustracje i czcionki nie są pobierane z obcych serwerów. Po zapisaniu kompletnej aplikacji w pamięci podręcznej można używać jej offline. Stan gotowości pokazuje stopka; system może później usunąć pamięć strony. Linki do źródeł wymagają internetu.</p><h2>Wyczyść postęp</h2><p>Ta opcja usuwa lokalne odpowiedzi, powtórki i zapisaną sesję z tej przeglądarki.</p><details id="reset-section"><summary>Chcę wyczyścić lokalne postępy</summary><p>Usunięcie nie ma funkcji cofania.</p>${action('Usuwam postępy i sesję', 'clear-progress', 'ghost')}</details><p class="micro">Wersja 1.3 · przegląd treści: 7 listopada 2026 r.</p></div>`, 'parent');
   }
   function audio() {
     const status = document.getElementById('audio-status');
@@ -124,7 +149,8 @@
     if (!status || !button) return;
     if (speaking) { stopAudio(); status.textContent = 'Czytanie zatrzymane.'; button.textContent = '▷ Posłuchaj wyjaśnienia'; return; }
     if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) { status.textContent = 'Ta przeglądarka nie obsługuje czytania na głos.'; return; }
-    const text = currentView === 'item' ? libraryItem?.theory : byId.get(session?.current)?.theory;
+    const item = currentView === 'item' ? libraryItem : byId.get(session?.current);
+    const text = isMath(item) ? [item.theory, ...item.visual.steps, item.visual.caption].filter(Boolean).join(' ') : item?.theory;
     if (!text) return;
     try {
       window.speechSynthesis.cancel();
@@ -150,18 +176,20 @@
       case 'home': home(); break;
       case 'resume': renderSession(); break;
       case 'start-learn': start('learn', document.getElementById('learn-category').value, document.getElementById('learn-length').value); break;
-      case 'start-quiz': start('quiz'); break;
+      case 'start-math-basics': startMathBasics(); break;
+      case 'start-quiz': start('quiz', 'all', MIXED_QUIZ_LENGTH); break;
+      case 'start-math-quiz': start('quiz', 'math', MATH_QUIZ_LENGTH); break;
       case 'new-learn': start('learn'); break;
       case 'category': libraryCategory = button.dataset.id; librarySearch = ''; library(); break;
       case 'library': library(); break;
       case 'open-item': openItem(button.dataset.id); break;
-      case 'practice-item': start('learn', 'all', 'all', [libraryItem.id]); break;
+      case 'practice-item': start('learn', 'all', 'all', [libraryItem.id], true, isMath(libraryItem)); break;
       case 'review': start('learn', 'all', 'all', reviewIds()); break;
       case 'retry': { const wrong = C.summary(session).wrong; start('learn', 'all', 'all', wrong); break; }
       case 'skip': if (C.skip(session, getAnswers)) { save(); renderSession(); } break;
       case 'recall': if (session?.stage === 'theory') { session.stage = 'recall'; save(); renderSession(); } break;
       case 'back-theory': if (session?.stage === 'recall') { session.stage = 'theory'; save(); renderSession(); } break;
-      case 'question': if (session?.stage === 'recall') { session.stage = 'question'; save(); renderSession(); } break;
+      case 'question': if (session?.stage === 'recall' || (session?.stage === 'theory' && isMath(byId.get(session.current)))) { session.stage = 'question'; save(); renderSession(); } break;
       case 'answer': submitAnswer(Number(button.dataset.index)); break;
       case 'next': if (session?.stage === 'feedback') { C.advance(session, getAnswers); save(); renderSession(); } break;
       case 'audio': audio(); break;

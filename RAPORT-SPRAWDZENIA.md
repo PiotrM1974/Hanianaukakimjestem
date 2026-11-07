@@ -1,3 +1,27 @@
+# Tablice do matematyki · Małe kroki 1.3
+
+7 listopada 2026 r.
+
+Wszystkie 89 zagadnień matematycznych ma krótką regułę, przykład na tablicy i rozwiązanie w punktach. Dodawanie i odejmowanie pisemne mają wyrównane kolumny. W dzieleniu z resztą pełne grupy i reszta mają osobne oznaczenia. Tablice z osią liczbową pokazują skoki, a w palindromach linie łączą porównywane cyfry.
+
+„Matematyka od podstaw” wybiera do trzech zadań w ustalonej kolejności. W czasie nauki można otworzyć przykład. Po odpowiedzi aplikacja pokazuje kroki rozwiązania. W testach tablica jest dostępna w biblioteczce.
+
+Wersja 1.3 zachowuje identyfikatory dotychczasowych zadań i kolejność znaczeń odpowiedzi. Dodano osobne ćwiczenie z dodawania w słupku. Sprawdzono 22 testy automatyczne oraz przykładowe tablice i przebieg ćwiczenia w Chrome na ekranie komputerowym i w widoku 360 px. Sprawdzono też odświeżenie aplikacji i otwarcie tablicy po wyłączeniu lokalnego serwera.
+
+---
+
+# Rozszerzenie matematyki · Małe kroki 1.2
+
+7 listopada 2026 r.
+
+Przed zmianą kodu sprawdzono 57 nowych pytań, ich odpowiedzi, przykłady i uzasadnienia. Rachunki przeliczono ponownie. W zadaniach o cyfrach, palindromach i liczbach spełniających warunek przeliczono też przypadki. Przykładowo 1 870 = 9 × 200 + 70 przy 70 < 200, 400³ = 64 000 000, a w zadaniu o różnicy cyfr setek i jedności trzy dopuszczalne pary dają łącznie 30 liczb.
+
+Część matematyczna ma 88 zagadnień. W całej aplikacji jest ich 158. Każde nowe zadanie ma przykład, schemat i wyjaśnienie rozwiązania po odpowiedzi. Test z matematyki losuje 30 różnych pytań z działu matematycznego. Test mieszany losuje 15 pytań z całej bazy.
+
+W wersji 1.2 testy automatyczne zaliczyły 20 z 20 przypadków. Obejmują między innymi uruchomienie i wznowienie testu z matematyki, liczbę i unikalność pytań oraz kompletność schematów. Przegląd przeglądarkowy opisany dalej dotyczy wcześniejszego wydania.
+
+---
+
 # Raport sprawdzenia · Małe kroki 1.1
 
 Data: **7 listopada 2026 r.**

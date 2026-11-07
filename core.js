@@ -8,8 +8,9 @@
     }
     return result;
   }
-  function createSession(ids, mode, random = Math.random) {
-    const selected = shuffle([...new Set(ids)], random);
+  function createSession(ids, mode, random = Math.random, { preserveOrder = false } = {}) {
+    const unique = [...new Set(ids)];
+    const selected = preserveOrder ? unique : shuffle(unique, random);
     if (!selected.length || !['learn', 'quiz'].includes(mode)) throw new Error('Nieprawidłowa sesja');
     return { version: 1, mode, ids: selected, queue: [...selected], current: null, skipped: [], reviewing: false, results: {}, stage: 'ready', choice: null, order: [] };
   }

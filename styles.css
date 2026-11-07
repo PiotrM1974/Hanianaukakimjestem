@@ -7,3 +7,57 @@
 @media print{.site-header,.site-footer,button,.session-progress,.session-top{display:none!important}body,main{background:white}main{padding:0}.lesson{box-shadow:none;border:0}.visual{break-inside:avoid}}
 
 .visual .diagram-narrow{display:none}@media(max-width:500px){.visual .diagram-wide{display:none}.visual .diagram-narrow{display:block}}
+
+/* Tablica matematyczna. Kolor wspiera podpisy kolumn i kolejność rachunków. */
+.class-board { margin: 0; padding: clamp(15px, 3vw, 30px); background: #fff; border: 1px solid #d5d9d4; border-radius: 13px; }
+.class-board figcaption { margin: 0 0 18px; font-size: 15px; font-weight: 700; color: #515260; }
+.board-calculation, .board-groups, .board-group-row, .board-tiles { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 14px 24px; }
+.board-calculation { align-items: center; }
+.board-columns { border-collapse: collapse; text-align: center; font-variant-numeric: tabular-nums; }
+.board-columns th { padding: 0 5px 6px; font-size: clamp(10px, 2vw, 14px); }
+.board-columns td { padding: 0 5px; font-size: clamp(25px, 6vw, 43px); line-height: 1.35; font-weight: 650; }
+.board-columns td:first-child { padding-right: 8px; }
+.board-columns .board-total td { border-top: 2px solid #50546a; }
+.board-columns .board-carry td { font-size: 16px; line-height: 1.15; }
+.board-ones { color: #7a357d; }
+.board-tens { color: #116648; }
+.board-hundreds { color: #a13847; }
+.board-scroll { overflow-x: auto; }
+.board-places { width: min(100%, 480px); border-spacing: 3px; text-align: center; font-variant-numeric: tabular-nums; }
+.board-places th, .board-places td { border-radius: 5px; padding: 4px; }
+.board-places th { font-size: clamp(11px, 2.1vw, 15px); }
+.board-places td { font-size: 16px; }
+.board-places .board-digits td { font-size: clamp(24px, 6vw, 42px); font-weight: 700; }
+.board-places .board-focus { background: #eaf4eb; }
+.board-svg { display: block; width: min(100%, 510px); height: auto; font-family: system-ui, sans-serif; }
+.board-group-row, .board-tiles { gap: 7px; }
+.board-group-label { margin: 0 0 7px; font-weight: 700; }
+.board-group { display: inline-grid; justify-items: center; gap: 6px; min-width: 46px; padding: 8px; border: 1px solid #8ebca7; border-radius: 8px; color: #116648; background: #edf6f0; line-height: 1.2; }
+.board-group.board-rest { border-color: #ba91ba; color: #7a357d; background: #f6edf6; }
+.board-dots { display: grid; grid-template-columns: repeat(5, 8px); gap: 4px; }
+.board-rest .board-dots { grid-template-columns: repeat(4, 8px); }
+.board-dots i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.board-tiles > div { min-width: 36px; padding: 5px 9px; border: 1px solid #dadbd8; border-radius: 7px; text-align: center; }
+.board-tiles b { display: block; font-size: clamp(18px, 4vw, 25px); }
+.board-tiles small { display: block; color: var(--ink); }
+.board-square { border-collapse: collapse; }
+.board-square td { border: 1px solid #8ebca7; background: #edf6f0; color: #116648; padding: 9px 12px; text-align: center; font-weight: 700; }
+.board-steps { margin: 0; padding-left: 25px; font-size: clamp(16px, 3.2vw, 20px); font-variant-numeric: tabular-nums; }
+.board-steps li { margin-block: 4px; padding-left: 4px; }
+.board-steps li::marker { font-size: .8em; font-weight: 700; }
+.class-board > :not(figcaption) + .board-steps { margin-top: 13px; }
+.board-note { border-top: 1px solid #e6e6e4; padding-top: 12px; margin: 15px 0 0; font-size: 15px; }
+.math-question { white-space: pre-line; }
+.math-hint { margin: 12px 0 16px; }
+.math-hint summary { cursor: pointer; min-height: 44px; padding: 8px 0; color: var(--purple-dark); font-weight: 650; }
+.math-feedback .board-steps { font-size: 16px; }
+.math-feedback .class-board { margin-top: 12px; }
+.math-feedback .board-answer { margin: 0 0 8px; font-weight: 650; }
+.math-starter { margin-top: 10px; }
+@media (max-width: 520px) {
+  .board-calculation { gap: 10px; }
+  .board-groups { gap: 12px; }
+  .board-group-row { max-width: 200px; }
+  .board-columns th { padding-inline: 3px; }
+}
+.board-equation { margin: 10px 0 0; font-size: clamp(19px, 4.5vw, 27px); }

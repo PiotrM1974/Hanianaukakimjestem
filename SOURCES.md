@@ -11,6 +11,9 @@ Przegląd: **7 listopada 2026 r.** Treści objaśnień, pytania i schematy są a
 | `math-maya-smithsonian` | [Smithsonian National Museum of the American Indian: Maya Math Game](https://maya.nmai.si.edu/maya-sun/maya-math-game?game=practice-1) | Wartości znaków Majów: kropka 1, kreska 5, muszla 0. |
 | `math-maya-history` | [University of St Andrews: Mayan mathematics](https://mathshistory.st-andrews.ac.uk/HistTopics/Mayan_mathematics/) | System liczbowy Majów opisywany jako dwudziestkowy; kalendarzowy zapis ma szczególny układ pozycji. |
 | `math-large-zpe` | [ZPE: Przedrostki SI i nazwy dużych liczb](https://zpe.gov.pl/a/przeczytaj/Dq6l1iVgq) | Miliard = 10⁹, bilion = 10¹², biliard = 10¹⁵. |
+| `math-roman-zpe` | [ZPE: Zapisywanie i odczytywanie liczb w systemie rzymskim](https://zpe.gov.pl/a/zapisywanie-i-odczytywanie-liczb-w-systemie-rzymskim/D10LQUnKH) | Wartości znaków i kolejność w szkolnym zapisie rzymskim. |
+| `math-remainder-zpe` | [ZPE: Dzielenie z resztą i bez reszty](https://zpe.gov.pl/a/5-podzielnosc-w-zbiorze-liczb-naturalnych---dzielenie-z-reszta-i-bez-reszty/D1F2EJFEX) | Iloraz, reszta oraz jej dopuszczalne wartości. |
+| `math-nbp-denomination` | [NBP: Historia pieniądza](https://nbp.pl/wp-content/uploads/2022/09/historia-scenariusz.pdf) | Denominacja w 1995 r., przelicznik 10 000 starych złotych za 1 nowy złoty. |
 | `zpe-sounds` | [ZPE: Wśród liter, głosek i sylab](https://zpe.gov.pl/a/wsrod-liter-glosek-i-sylab/D1411aqT6) | Głoska i litera, zapis samogłosek, dwuznaki, sylaby, rola i. |
 | `rjp` | [RJP: Zasady pisowni i interpunkcji polskiej, tekst obowiązujący od 2026 r.](https://rjp.pan.pl/app/uploads/2025/12/2-zalacznik-do-komunikatu-po-redakcji-do-druku11-25-wersja-ostateczna-jednolita.pdf) | Rozdziały 2.2, 3.2 oraz 8: ó/u, miękkość, dzielenie wyrazów. [Strona zbiorcza RJP](https://rjp.pan.pl/zmiany-pisowni-2026-3/). |
 | `zpe-spelling` | [ZPE: pakiet materiałów, zasady ó/u](https://zpe.gov.pl/pobierz/R4rXx7N3rY4nx) | Szkolne przykłady wymian i zakończeń. Przy wyjątkach nadrzędnym źródłem pozostaje RJP. |
@@ -61,3 +64,6 @@ Dodano 31 zagadnień matematycznych na podstawie zdjęć z zakresu stron 58–69
 
 7 listopada 2026 r. ręcznie przejrzano pytania, klucze odpowiedzi i objaśnienia we wszystkich 101 tematach. Wyniki rachunków z 31 tematów matematycznych przeliczono niezależnie. Zasady ortograficzne sprawdzono względem aktualnie wskazanych zasad RJP; fakty o hymnie i bezpieczeństwie sieci mają osobne źródła. Historyczne przykłady liczbowe mają dodatkowe źródła zapisane powyżej. Testy automatyczne weryfikują strukturę i zachowanie aplikacji, nie prawdziwość definicji.
 
+## Rozszerzenie matematyki w wersji 1.2
+
+Dodano 57 autorskich zadań z przykładami, przypominaniem reguły i uzasadnieniem odpowiedzi. W części matematycznej jest teraz 88 tematów. Przed zmianą kodu przeliczono klucze i sprawdzono, czy każde pytanie ma dokładnie jedną poprawną opcję. W zadaniach o liczbach z warunkiem użyto również wyliczenia wszystkich możliwości. Dane w nowych tabelach i zadaniach cenowych są przykładowe.
